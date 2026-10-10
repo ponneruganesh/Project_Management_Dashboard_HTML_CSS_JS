@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlowBoard | Project Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#" aria-label="FlowBoard home"><span class="brand-mark">F</span><span>flowboard<small>PROJECT WORKSPACE</small></span></a>
+    <div class="workspace"><span class="workspace-icon">W</span><span><b>Workspace</b><small>Personal workspace</small></span><span class="chevron">⌄</span></div>
+    <p class="nav-label">MENU</p>
+    <button class="nav-item active" data-view="overview"><span>▦</span> Overview</button>
+    <button class="nav-item" data-view="projects"><span>▤</span> Projects</button>
+    <button class="nav-item" data-view="tasks"><span>☑</span> My tasks</button>
+    <button class="nav-item" data-view="team"><span>♧</span> Team</button>
+    <div class="sidebar-bottom"><div class="avatar">JD</div><div><b>Jordan Davis</b><small>Workspace admin</small></div><span class="more">•••</span></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="mobile-brand"><span class="brand-mark">F</span> flowboard</div>
+      <div class="crumb">Workspace <span>/</span> <b id="crumb-title">Overview</b></div>
+      <div class="top-actions"><span class="online"><i></i> All changes saved</span><button class="icon-button" title="Notifications">♧<em></em></button><div class="avatar small-avatar">JD</div></div>
+    </header>
+
+    <section id="overview-view" class="view">
+      <div class="page-heading"><div><p class="eyebrow">MONDAY, YOUR WORKSPACE</p><h1>Good morning, Jordan <span class="wave">✦</span></h1><p class="subheading">Here’s what’s happening with your projects today.</p></div><button class="primary" id="new-project-top">＋ New project</button></div>
+      <div class="stats">
+        <article class="stat-card"><div class="stat-head"><span>Active projects</span><span class="stat-icon indigo">▤</span></div><strong id="stat-active">0</strong><small><span class="up">↗</span> Projects in progress</small></article>
+        <article class="stat-card"><div class="stat-head"><span>Tasks completed</span><span class="stat-icon mint">✓</span></div><strong id="stat-completed">0</strong><small>Across all projects</small></article>
+        <article class="stat-card"><div class="stat-head"><span>Tasks in progress</span><span class="stat-icon amber">◷</span></div><strong id="stat-progress">0</strong><small>Currently being worked on</small></article>
+        <article class="stat-card"><div class="stat-head"><span>Overdue tasks</span><span class="stat-icon rose">!</span></div><strong id="stat-overdue">0</strong><small>Need your attention</small></article>
+      </div>
+      <div class="content-grid">
+        <section class="panel projects-panel">
+          <div class="panel-heading"><div><h2>Project overview</h2><p>Track progress across your workspace</p></div><button class="text-button" data-nav="projects">View all ↗</button></div>
+          <div id="overview-projects" class="project-list"></div>
+        </section>
+        <section class="panel task-panel">
+          <div class="panel-heading"><div><h2>My tasks</h2><p>Your next priorities</p></div><button class="text-button" data-nav="tasks">View all ↗</button></div>
+          <div id="overview-tasks" class="mini-task-list"></div>
+        </section>
+      </div>
+      <section class="panel activity-panel"><div class="panel-heading"><div><h2>Workspace snapshot</h2><p>A quick look at your team's workload</p></div><span class="snapshot-pill">Live overview</span></div><div class="snapshot-grid"><div><span class="snapshot-number" id="snapshot-total">0</span><span class="snapshot-label">Total tasks</span></div><div><span class="snapshot-number" id="snapshot-done">0%</span><span class="snapshot-label">Completion rate</span></div><div><span class="snapshot-number" id="snapshot-members">0</span><span class="snapshot-label">Team members</span></div><div><span class="snapshot-number" id="snapshot-due">0</span><span class="snapshot-label">Due this week</span></div></div></section>
+    </section>
+
+    <section id="projects-view" class="view hidden">
+      <div class="page-heading"><div><p class="eyebrow">YOUR WORKSPACE</p><h1>Projects</h1><p class="subheading">Organize work, track progress, and hit your goals.</p></div><button class="primary" id="new-project-btn">＋ New project</button></div>
+      <div class="toolbar"><label class="searchbox">⌕ <input id="project-search" placeholder="Search projects..."></label><select id="project-filter"><option value="all">All statuses</option><option value="In progress">In progress</option><option value="Planning">Planning</option><option value="Completed">Completed</option></select></div>
+      <div id="projects-grid" class="projects-grid"></div>
+    </section>
+
+    <section id="tasks-view" class="view hidden">
+      <div class="page-heading"><div><p class="eyebrow">STAY ON TRACK</p><h1>My tasks</h1><p class="subheading">Keep your next actions clear and manageable.</p></div><button class="primary" id="new-task-btn">＋ Add task</button></div>
+      <div class="toolbar"><label class="searchbox">⌕ <input id="task-search" placeholder="Search tasks..."></label><select id="task-filter"><option value="all">All statuses</option><option value="To do">To do</option><option value="In progress">In progress</option><option value="Completed">Completed</option></select></div>
+      <div class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>Task</th><th>Project</th><th>Due date</th><th>Priority</th><th>Status</th><th>Action</th></tr></thead><tbody id="tasks-table"></tbody></table></div></div>
+    </section>
+
+    <section id="team-view" class="view hidden">
+      <div class="page-heading"><div><p class="eyebrow">PEOPLE & COLLABORATION</p><h1>Team</h1><p class="subheading">The people helping move projects forward.</p></div><button class="primary" id="add-member-btn">＋ Add member</button></div>
+      <div id="team-grid" class="team-grid"></div>
+      <div class="tip"><span>✦</span><div><b>Great work happens together</b><p>Add your real team members before using screenshots in your internship submission.</p></div></div>
+    </section>
+    <footer>FlowBoard Project Management Dashboard <span>·</span> Internship Project Demo</footer>
+  </main>
+
+  <dialog id="project-dialog" class="modal"><form id="project-form">
+    <div class="modal-head"><div><p class="eyebrow">PROJECT WORKSPACE</p><h2>Create a project</h2></div><button type="button" class="close" data-close="project-dialog">×</button></div>
+    <label>Project name<input name="name" required maxlength="80" placeholder="e.g. Website redesign"></label>
+    <label>Description<textarea name="description" rows="3" maxlength="220" placeholder="What is this project about?"></textarea></label>
+    <div class="form-row"><label>Due date<input name="dueDate" type="date" required></label><label>Status<select name="status"><option>Planning</option><option>In progress</option><option>Completed</option></select></label></div>
+    <label>Project color<select name="color"><option value="violet">Violet</option><option value="teal">Teal</option><option value="orange">Orange</option><option value="blue">Blue</option><option value="pink">Pink</option></select></label>
+    <div class="modal-actions"><button type="button" class="secondary" data-close="project-dialog">Cancel</button><button class="primary" type="submit">Create project</button></div>
+  </form></dialog>
+
+  <dialog id="task-dialog" class="modal"><form id="task-form">
+    <div class="modal-head"><div><p class="eyebrow">TASK PLANNER</p><h2>Add a task</h2></div><button type="button" class="close" data-close="task-dialog">×</button></div>
+    <label>Task title<input name="title" required maxlength="100" placeholder="What needs to get done?"></label>
+    <label>Project<select name="projectId" id="task-project" required></select></label>
+    <div class="form-row"><label>Due date<input name="dueDate" type="date" required></label><label>Priority<select name="priority"><option>Medium</option><option>High</option><option>Low</option></select></label></div>
+    <label>Status<select name="status"><option>To do</option><option>In progress</option><option>Completed</option></select></label>
+    <div class="modal-actions"><button type="button" class="secondary" data-close="task-dialog">Cancel</button><button class="primary" type="submit">Add task</button></div>
+  </form></dialog>
+
+  <dialog id="member-dialog" class="modal"><form id="member-form">
+    <div class="modal-head"><div><p class="eyebrow">TEAM WORKSPACE</p><h2>Add team member</h2></div><button type="button" class="close" data-close="member-dialog">×</button></div>
+    <label>Full name<input name="name" required maxlength="70" placeholder="Team member name"></label>
+    <label>Role<input name="role" required maxlength="70" placeholder="e.g. UI Designer"></label>
+    <label>Email<input name="email" type="email" maxlength="100" placeholder="name@example.com"></label>
+    <div class="modal-actions"><button type="button" class="secondary" data-close="member-dialog">Cancel</button><button class="primary" type="submit">Add member</button></div>
+  </form></dialog>
+  <script src="script.js"></script>
+</body>
+</html>
